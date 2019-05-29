@@ -40,7 +40,7 @@ namespace Tests
         /// <param name="a">頂点A</param>
         /// <param name="b">頂点B</param>
         /// <param name="c">頂点C</param>
-        public Triangle(Point a,Point b,Point c)  //Triangle()←コンストラクター
+        public Triangle(Point a, Point b, Point c)  //Triangle()←コンストラクター
         {                                         //newされた時に呼び出される関数
             this.a = a;
             this.b = b;
@@ -65,23 +65,29 @@ namespace Tests
     //--------------------------------------------------------
     class TestGetArea
     {
-        static void Main()      //以下スーパー混乱タイム
+        static void Main()      //以下スーパー解説タイム
         {
 
             Triangle t;         //インスタンスを格納するための変数を定義
-            t = new Triangle(new Point(0,0),new Point(1919,14),new Point(45,11)); 
-            //new キーワードでインスタンスを作成して、用意した変数tに格納する
-            //引数付きのコンストラクターTriangleを呼び出す際には引数リストを渡してやる
-            //引数リストがnewされるのはなんなのか？わからない
-            //引数のPoint(0,0)はPoint型の変数に固定値をぶち込んでいる
-            //ん？Point(0,0)はインスタンスで newされて上の方のPoint(double x ,double y){}のコンストラクターを呼び出している？
-            //だとするとPoint()のインスタンスを格納する変数はどれ？？？
+            Point a, b, c;
+            a = new Point(0, 0);
+            b = new Point(1919, 14);
+            c = new Point(45, 11);
+            t = new Triangle(a, b, c);
+            //Triangle t;
+            //t = new Triangle(new Point(0, 0), new Point(1919, 14), new Point(45, 11));
+            //これは↑↑のように書き直せる
+            //インスタンスを格納する変数a,b,c、インスタンスを格納する変数t
+            //んでパッと見a,b,cが目で見えなくて、インスタンス格納する変数ドコー？って混乱してたのね
+            //ILレベルだと変数見えるよー、C#では隠れるらしい
+            //  https://sharplab.io/
+            //にコード張り付ければ見えるんじゃないかな？
+
             Console.Write("{0}\n", t.GetArea());
             //そしてUnityTestRunner上ではビルドしてステップ実行はできないのかな？
         }
     }
 
-    
 }
 
 
